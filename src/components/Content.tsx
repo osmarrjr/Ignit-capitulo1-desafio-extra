@@ -1,22 +1,28 @@
 import { MovieCard } from './MovieCard';
 
-interface contentProps {
-  movies: Array<{
-    imdbID: string,
-    Title: string,
-    Poster: string,
-    Runtime: string,
-    Ratings: Array<{
-      Value: string
-    }>
-  }>,
-  
-  selectedGenre: {
-    title: string
-  }
+interface ContentProps {
+  movies: Movie[],
+  selectedGenre: SelectedGenre
 }
 
-export function Content({selectedGenre, movies} : contentProps) {
+interface Movie {
+  imdbID: string,
+  Title: string,
+  Poster: string,
+  Runtime: string,
+  Ratings: Ratings[]
+}
+
+interface Ratings {
+  Value: string
+}
+
+interface SelectedGenre {
+    title: string
+}
+
+
+export function Content({selectedGenre, movies} : ContentProps) {
   return(
     <div className="container">
       <header>
